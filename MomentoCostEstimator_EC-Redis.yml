@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+    CacheNameParameter:
+        Type: String
+        Description: Enter the name of your ElastiCache Redis cluster. Example "MyRedisCluster".
+    CacheRegionParameter:
+        Type: String
+        Description: Which AWS Region is the cluster deployed in?
+Resources:
+    MomentoDashboard:
+        Type: 'AWS::CloudWatch::Dashboard'
+        Properties:
+            DashboardName: !Sub "MomentoCostEstimator_${CacheNameParameter}_${CacheRegionParameter}"
+            DashboardBody: !Sub |-
+                {
+                    "widgets": [
+                        {
+                            "height": 17,
+                            "width": 24,
+                            "y": 0,
+                            "x": 0,
+                            "type": "metric",
+                            "properties": {
+                                "metrics": [
+                                    [ { "expression": "SUM(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesOut\" ', 'Sum' )) - (e2 * 2)", "label": "Read Consumption", "id": "e1", "period": 60, "stat": "Sum", "region": "${CacheRegionParameter}" } ],
+                                    [ { "expression": "SUM(SLICE(SORT(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesIn\" ', 'Sum' ), SUM, DESC), 1)) / (METRIC_COUNT(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesIn\" ', 'Sum' )) - 1)", "label": "Write Consumption", "id": "e2", "region": "${CacheRegionParameter}", "period": 60 } ],
+                                    [ { "expression": "FLOOR((e1 + e2) / (1024 * 1024 * 1024) * 15) / 100", "label": "Momento Cost", "id": "e3", "yAxis": "right", "period": 60, "region": "${CacheRegionParameter}" } ]
+                                ],
+                                "view": "timeSeries",
+                                "stacked": false,
+                                "region": "${CacheRegionParameter}",
+                                "stat": "Average",
+                                "period": 60,
+                                "title": "Momento Estimated Cost",
+                                "yAxis": {
+                                    "left": {
+                                       "label": "Bytes",
+                                        "showUnits": false
+                                    },
+                                    "right": {
+                                       "label": "$(US)",
+                                       "showUnits": false
+                                    }
+                                },
+                                "start": "-PT3H",
+                                "end": "P0D"
+                            }
+                        }
+                    ]
+                }

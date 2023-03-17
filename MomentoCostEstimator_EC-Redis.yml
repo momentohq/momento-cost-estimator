@@ -42,7 +42,7 @@ Resources:
                                        "showUnits": false
                                     }
                                 },
-                                "start": "-PT3H",
+                                "start": "-PT1H",
                                 "end": "P0D"
                             }
                         }

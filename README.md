@@ -19,6 +19,8 @@ You can deploy the stack from any region, as CloudWatch dashboards are global re
 asked to name the stack - this can be anything but a meaningful name is recommended so that you'll know what it represents later.
 You'll also be asked to provide the name of the ElastiCache for Redis cluster and its AWS region. Examples might be "MyRedisCluster" and "us-west-2" or "game-prod" and "us-east-1". It's important to get these right or the metrics won't be correct. If you get it wrong, you can just delete the stack and start over.
 
+Once the stack deployment is complete, browse over to the CloudWatch console, and select your new dashboard.
+
 ### Understanding the graphed metrics and comparing costs
 
 The dashboard widget created is a graph of three time series - read throughput (bytes), write throughput (bytes) and estimated Momento cost (US$). By default this will show per-minute granularity over the most recent hour. But you can change this around as you wish. To get a number for comparison, try

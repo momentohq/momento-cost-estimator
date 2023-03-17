@@ -10,9 +10,10 @@ the application load with Momento Serverless Cache instead.
 
 ### Deploying the dashboard
 
-Use CloudFormation to create a stack by pointing it to the URL for the template, [here](https://raw.githubusercontent.com/momentohq/momento-cost-estimator/main/MomentoCostEstimator_EC-Redis.yml). If you prefer, you can copy and paste the following.
+Use CloudFormation to create a stack by either...
 
-https://raw.githubusercontent.com/momentohq/momento-cost-estimator/main/MomentoCostEstimator_EC-Redis.yml
+- copy and paste the template from https://raw.githubusercontent.com/momentohq/momento-cost-estimator/main/MomentoCostEstimator_EC-Redis.yml
+- download this file https://raw.githubusercontent.com/momentohq/momento-cost-estimator/main/MomentoCostEstimator_EC-Redis.yml and point CloudFormation to your local copy
 
 You can deploy the stack from any region, as CloudWatch dashboards are global resources. When deploying the stack, you'll be
 asked to name the stack - this can be anything but a meaningful name is recommended so that you'll know what it represents later.

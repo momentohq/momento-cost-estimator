@@ -2,7 +2,7 @@
 
 ## Momento equivalent cost - Amazon ElastiCache for Redis
 
-This is [a CloudFormation template](https://github.com/momentohq/momento-cost-estimator/blob/main/MomentoCostEstimator_EC-Redis.yml)
+This is a [CloudFormation template](https://github.com/momentohq/momento-cost-estimator/blob/main/MomentoCostEstimator_EC-Redis.yml)
 which creates a CloudWatch dashboard to show you an estimated equivalent cost for an ElastiCache for Redis cluster if you were supporting
 the application load with Momento Serverless Cache instead.
 

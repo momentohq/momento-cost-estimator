@@ -1,4 +1,6 @@
-{{ ossHeader }}
+# Momento Cost Estimator
+
+This repo contains tools used for making Momento cost comparisons.
 
 ## Momento equivalent cost - Amazon ElastiCache for Redis
 

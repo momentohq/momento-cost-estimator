@@ -2,6 +2,9 @@
 
 This repo contains tools used for making Momento cost comparisons.
 
+[![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=momento-cost-estimator&templateURL=https://raw.githubusercontent.com/momentohq/momento-cost-estimator/main/MomentoCostEstimator_EC-Redis.yml)
+
+
 ## Momento equivalent cost - Amazon ElastiCache for Redis
 
 This is a [CloudFormation template](https://github.com/momentohq/momento-cost-estimator/blob/main/MomentoCostEstimator_EC-Redis.yml)

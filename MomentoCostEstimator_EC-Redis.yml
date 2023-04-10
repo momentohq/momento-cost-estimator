@@ -24,7 +24,7 @@ Resources:
                                 "metrics": [
                                     [ { "expression": "SUM(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesOut\" ', 'Sum' )) - (e2 * 2)", "label": "Read Consumption", "id": "e1", "period": 60, "stat": "Sum", "region": "${CacheRegionParameter}" } ],
                                     [ { "expression": "SUM(SLICE(SORT(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesIn\" ', 'Sum' ), SUM, DESC), 1)) / (METRIC_COUNT(SEARCH('{AWS/ElastiCache,CacheClusterId} CacheClusterId=${CacheNameParameter}- MetricName=\"NetworkBytesIn\" ', 'Sum' )) - 1)", "label": "Write Consumption", "id": "e2", "region": "${CacheRegionParameter}", "period": 60 } ],
-                                    [ { "expression": "FLOOR((e1 + e2) / (1024 * 1024 * 1024) * 15) / 100", "label": "Momento Cost", "id": "e3", "yAxis": "right", "period": 60, "region": "${CacheRegionParameter}" } ]
+                                    [ { "expression": "FLOOR((e1 + e2) / (1024 * 1024 * 1024) * 50) / 100", "label": "Momento Cost", "id": "e3", "yAxis": "right", "period": 60, "region": "${CacheRegionParameter}" } ]
                                 ],
                                 "view": "timeSeries",
                                 "stacked": false,
